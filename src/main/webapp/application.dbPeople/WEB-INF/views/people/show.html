@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GoodBye</title>
+    <title>Person</title>
 </head>
 <body>
-Goodbye!!
-<a href="/hello">Say Hello!</a> or <a href="/exit">Exit</a>
+<p th:text="${person.getName()}">Value</p>
+<p th:text="${person.getId()}">Value</p>
 </body>
 </html>

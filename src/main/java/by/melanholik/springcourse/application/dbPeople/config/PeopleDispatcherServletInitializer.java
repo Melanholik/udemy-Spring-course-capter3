@@ -1,8 +1,8 @@
-package by.melanholik.springcourse.config;
+package by.melanholik.springcourse.application.dbPeople.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class MvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class PeopleDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return null;
