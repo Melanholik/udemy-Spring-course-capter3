@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Component
 public class PersonDAO {
@@ -14,10 +13,10 @@ public class PersonDAO {
 
     {
         people = new ArrayList<>();
-        people.add(new Person(++PEOPLE_COUNT, "Tom"));
-        people.add(new Person(++PEOPLE_COUNT, "Ben"));
-        people.add(new Person(++PEOPLE_COUNT, "Kate"));
-        people.add(new Person(++PEOPLE_COUNT, "Ann"));
+        people.add(new Person(++PEOPLE_COUNT, "Tom", 15, "tom@gmail.com"));
+        people.add(new Person(++PEOPLE_COUNT, "Ben", 34, "ben@amazon.by"));
+        people.add(new Person(++PEOPLE_COUNT, "Kate", 20, "kate@onliner.by"));
+        people.add(new Person(++PEOPLE_COUNT, "Ann", 18, "ann@mail.com"));
     }
 
     public List<Person> index() {
@@ -34,8 +33,13 @@ public class PersonDAO {
     }
 
     public void update(int id, Person person) {
-        Objects.requireNonNull(people.stream().filter(person1 -> person.getId() == id)
-                .findAny().orElse(null)).setName(person.getName());
+        Person currentPerson = people.stream().filter(person1 -> person1.getId() == id)
+                .findAny().orElse(null);
+        if (currentPerson != null) {
+            currentPerson.setName(person.getName());
+            currentPerson.setAge(person.getAge());
+            currentPerson.setEmail(person.getEmail());
+        }
     }
 
     public void delete(int id) {
