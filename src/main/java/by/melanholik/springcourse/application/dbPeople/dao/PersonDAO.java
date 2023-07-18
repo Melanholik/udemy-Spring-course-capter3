@@ -28,11 +28,6 @@ public class PersonDAO {
         return jdbcTemplate.query("SELECT * FROM person", new BeanPropertyRowMapper<>(Person.class));
     }
 
-    private int maxId() {
-        return jdbcTemplate.query("SELECT MAX(id) AS id FROM person", new IndexMapper())
-                .stream().findFirst().orElse(0);
-    }
-
     public Person show(int id) {
         return jdbcTemplate.query("SELECT * FROM person WHERE id = ?", new Object[]{id},
                         new BeanPropertyRowMapper<>(Person.class))
@@ -40,8 +35,8 @@ public class PersonDAO {
     }
 
     public void save(Person person) {
-        jdbcTemplate.update("INSERT INTO person VALUES (?, ?, ? ,?)",
-                maxId() + 1, person.getName(), person.getAge(), person.getEmail());
+        jdbcTemplate.update("INSERT INTO person(name, age, email) VALUES ( ?, ? ,?)",
+                person.getName(), person.getAge(), person.getEmail());
     }
 
     public void update(int id, Person person) {
@@ -58,8 +53,8 @@ public class PersonDAO {
         List<Person> people = create1000People();
         long before = System.currentTimeMillis();
         for (Person person : people) {
-            jdbcTemplate.update("INSERT INTO person VALUES (?, ?, ? ,?)",
-                    maxId() + 1, person.getName(), person.getAge(), person.getEmail());
+            jdbcTemplate.update("INSERT INTO person(name, age, email) VALUES ( ?, ? ,?)",
+                    person.getName(), person.getAge(), person.getEmail());
         }
 
         long after = System.currentTimeMillis();
@@ -77,13 +72,12 @@ public class PersonDAO {
     public void testBatchUpdate() {
         List<Person> people = create1000People();
         long before = System.currentTimeMillis();
-        jdbcTemplate.batchUpdate("INSERT INTO person VALUES (?, ?, ? ,?)", new BatchPreparedStatementSetter() {
+        jdbcTemplate.batchUpdate("INSERT INTO person(name, age, email) VALUES (?, ? ,?)", new BatchPreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
-                ps.setInt(1, people.get(i).getId());
-                ps.setString(2, people.get(i).getName());
-                ps.setInt(3, people.get(i).getAge());
-                ps.setString(4, people.get(i).getEmail());
+                ps.setString(1, people.get(i).getName());
+                ps.setInt(2, people.get(i).getAge());
+                ps.setString(3, people.get(i).getEmail());
             }
 
             @Override
