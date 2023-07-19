@@ -1,6 +1,6 @@
 delete
 from person
-where id > 2;
+where id > 0;
 
 SELECT *
 FROM person;
@@ -29,3 +29,7 @@ INSERT INTO person(name, age, email)
 VALUES ('Kate', 18, 'Kate@ya.ru');
 INSERT INTO person(name, age, email)
 VALUES ('Vitaliy', 33, 'Vitaliy@gmail.com');
+
+
+ALTER TABLE person 
+    ADD COLUMN address varchar NOT NULL DEFAULT '---';
