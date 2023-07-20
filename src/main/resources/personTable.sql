@@ -33,3 +33,6 @@ VALUES ('Vitaliy', 33, 'Vitaliy@gmail.com');
 
 ALTER TABLE person 
     ADD COLUMN address varchar NOT NULL DEFAULT '---';
+
+INSERT INTO person(name, age, email, address)
+VALUES ('Виталий', 33, 'tom@gmail.com', 'Belarus, Baranovichy, 123456');
