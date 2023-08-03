@@ -13,10 +13,14 @@ public class App {
         try (sessionFactory) {
             Session session = sessionFactory.getCurrentSession();
             session.beginTransaction();
-            session.persist(new Person("Vera", 37));
-            session.persist(new Person("Ola", 30));
-            session.persist(new Person("Sergey", 34));
+            Person person = new Person("Kirill", 28);
+            session.persist(person);
+            System.out.println(person.getId());
+            person.setName("Vitaliy");
+            Person person1 = session.get(Person.class, 5);
+            session.remove(person1);
             session.getTransaction().commit();
+            System.out.println(person.getId());
         }
     }
 }
