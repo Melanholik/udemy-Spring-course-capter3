@@ -13,10 +13,10 @@ public class App {
         try (sessionFactory) {
             Session session = sessionFactory.getCurrentSession();
             session.beginTransaction();
-            Person person = session.get(Person.class, 1);
+            session.persist(new Person("Vera", 37));
+            session.persist(new Person("Ola", 30));
+            session.persist(new Person("Sergey", 34));
             session.getTransaction().commit();
-            System.out.println(person.getName());
-            System.out.println(person.getAge());
         }
     }
 }
