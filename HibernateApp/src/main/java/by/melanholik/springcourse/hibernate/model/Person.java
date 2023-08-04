@@ -23,12 +23,22 @@ public class Person {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
     private List<Item> items;
 
+    @OneToOne(mappedBy = "person", cascade = CascadeType.PERSIST)
+    private Passport passport;
+
     public Person() {
     }
 
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
+    }
+
+    public Person(String name, int age, List<Item> items, Passport passport) {
+        this.name = name;
+        this.age = age;
+        this.items = items;
+        this.passport = passport;
     }
 
     public int getId() {
@@ -63,6 +73,14 @@ public class Person {
         this.items = items;
     }
 
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    }
+
     public void addItem(Item item) {
         if (items == null) {
             items = new ArrayList<>();
@@ -72,6 +90,11 @@ public class Person {
         assert item != null;
         item.setOwner(this);
 
+    }
+
+    public void addPassport(Passport passport) {
+        this.passport = passport;
+        passport.setPerson(this);
     }
 
     @Override
