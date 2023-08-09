@@ -61,6 +61,7 @@ public class PeopleController {
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult,
                          @PathVariable("id") int id) {
+        personValidator.validateWhenChange(person, bindingResult);
         if (bindingResult.hasErrors())
             return "/people/edit";
 
