@@ -1,3 +1,4 @@
 rootProject.name = 'udemy-Spring-course-capter3'
 include 'HibernateApp'
+include 'springHibernate'
 

@@ -13,6 +13,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/HibernateApp" />
+            <option value="$PROJECT_DIR$/springHibernate" />
           </set>
         </option>
       </GradleProjectSettings>

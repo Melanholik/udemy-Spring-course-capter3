@@ -1,0 +1,29 @@
+plugins {
+    id 'war'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework:spring-core:5.3.27'
+    implementation 'org.springframework:spring-context:5.3.27'
+    implementation 'org.springframework:spring-web:5.3.27'
+    implementation 'org.springframework:spring-webmvc:5.3.27'
+    implementation 'org.springframework:spring-jdbc:5.3.27'
+    implementation 'org.springframework:spring-orm:5.3.27'
+    implementation 'org.thymeleaf:thymeleaf-spring5:3.0.11.RELEASE'
+    implementation 'org.hibernate.validator:hibernate-validator:6.2.5.Final'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.4'
+    implementation 'org.hibernate:hibernate-core:5.3.27.Final'
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+}
+
+test {
+    useJUnitPlatform()
+}
