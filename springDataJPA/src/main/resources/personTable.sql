@@ -30,3 +30,6 @@ VALUES ('Tom', 33, 'tom@gmail.com', 'Belarus, Baranovichy, 123456'),
         ('Sergey', 34, 'Sergey@ya.ru', 'Russia, Moscow, 333333');
 
 
+
+SELECT *
+FROM item;

@@ -13,6 +13,17 @@
 <div th:text="${person.getAge()}">Value</div>
 <div th:text="${person.getEmail()}">Value</div>
 <div th:text="${person.getAddress()}">Value</div>
+<div>У этого человека есть товар:</div>
+<div th:each="item:${person.getItems()}">
+    <a th:href="@{/items/{id}(id=${item.getId()})}"
+       th:text="${item.getName()}">item</a>
+    <form th:method="PATCH" th:action="@{/items/deleteIdPerson/{id}(id=${item.getId()})}" th:object="${person}" >
+        <input type="hidden" th:field="*{id}" th:value=${person.getId()}/>
+        <input type="submit" value="Delete"/>
+    </form>
+</div>
+
+
 <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
 <form th:method="Delete" th:action="@{/people/{id}(id=${person.getId()})}">
     <input type="submit" value="Delete"/>

@@ -2,6 +2,7 @@ package dbPeople.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.List;
 
 @Entity
 @Table(name = "person")
@@ -29,6 +30,9 @@ public class Person {
     @NotEmpty
     @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, \\d{6}")
     private String address;
+
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private List<Item> items;
 
 
     public Person() {
@@ -80,5 +84,13 @@ public class Person {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }
