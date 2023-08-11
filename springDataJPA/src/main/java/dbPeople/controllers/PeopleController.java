@@ -1,5 +1,6 @@
 package dbPeople.controllers;
 
+import dbPeople.DAO.PersonDAO;
 import dbPeople.models.Person;
 import dbPeople.services.PeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,12 @@ import javax.validation.Valid;
 public class PeopleController {
 
     private final PeopleService peopleService;
+    private PersonDAO personDAO;
 
     @Autowired
-    public PeopleController(PeopleService peopleService) {
+    public PeopleController(PeopleService peopleService, PersonDAO personDAO) {
         this.peopleService = peopleService;
+        this.personDAO = personDAO;
     }
 
 
