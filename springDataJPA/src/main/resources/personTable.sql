@@ -45,3 +45,5 @@ ALTER TABLE person ADD COLUMN created_at TIMESTAMP;
 ALTER TABLE person DROP COLUMN created_at;
 
 DELETE FROM person WHERE id = 7;
+
+ALTER TABLE person ADD COLUMN mood VARCHAR;
