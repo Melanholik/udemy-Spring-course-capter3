@@ -28,15 +28,17 @@ public class PeopleService {
         return peopleRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     public void update(int id, Person person) {
         person.setId(id);
         peopleRepository.save(person);
     }
 
+    @Transactional
     public void save(Person person) {
         peopleRepository.save(person);
     }
-
+    @Transactional
     public void deleteById(int id) {
         peopleRepository.deleteById(id);
     }
