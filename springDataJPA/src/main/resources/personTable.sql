@@ -33,3 +33,15 @@ VALUES ('Tom', 33, 'tom@gmail.com', 'Belarus, Baranovichy, 123456'),
 
 SELECT *
 FROM item;
+
+-- Просто дата без точного времени (03/04/2000)
+ALTER TABLE person ADD COLUMN data_of_birth DATE;
+
+
+--Точное время
+--Значение timestamp сохраняются в секундах до или после 1 января 2000г
+ALTER TABLE person ADD COLUMN created_at TIMESTAMP;
+
+ALTER TABLE person DROP COLUMN created_at;
+
+DELETE FROM person WHERE id = 7;
